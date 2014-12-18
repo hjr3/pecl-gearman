@@ -2630,7 +2630,7 @@ static gearman_return_t _php_task_cb_fn(gearman_task_obj *task,
 	} else {
 		Z_TYPE_P(ztask)= IS_OBJECT;
 		Z_OBJVAL_P(ztask)= task->value;
-		zend_objects_store_add_ref_by_handle(task->value.handle);
+		zend_objects_store_add_ref_by_handle(task->value.handle TSRMLS_CC);
 		null_ztask= true;
 	}
 
@@ -2667,7 +2667,7 @@ static gearman_return_t _php_task_cb_fn(gearman_task_obj *task,
 
 	if (null_ztask) {
 		Z_TYPE_P(ztask)= IS_NULL;
-		zend_objects_store_del_ref_by_handle(task->value.handle);
+		zend_objects_store_del_ref_by_handle(task->value.handle TSRMLS_CC);
 	}
 	GEARMAN_ZVAL_DONE(ztask)
 
