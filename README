@@ -33,7 +33,7 @@ following line to your php.ini:
 
 extension="gearman.so"
 
-You can then test if the modlue is configure correctly with the
+You can then test if the module is configured correctly with the
 PHP cli:
 
 php --info | grep gearman
