@@ -1828,10 +1828,6 @@ PHP_FUNCTION(gearman_client_add_server) {
 		RETURN_FALSE;
 	}
 
-	if (!gearman_client_set_server_option(&(obj->client), "exceptions", (sizeof("exceptions") - 1))) {
-	    GEARMAN_EXCEPTION("Failed to set exception option", 0);
-	}
-
 	RETURN_TRUE;
 }
 /* }}} */
@@ -1852,10 +1848,6 @@ PHP_FUNCTION(gearman_client_add_servers) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "%s",
 						 gearman_client_error(&(obj->client)));
 		RETURN_FALSE;
-	}
-
-	if (!gearman_client_set_server_option(&(obj->client), "exceptions", (sizeof("exceptions") - 1))) {
-	    GEARMAN_EXCEPTION("Failed to set exception option", 0);
 	}
 
 	RETURN_TRUE;
@@ -3267,10 +3259,6 @@ PHP_FUNCTION(gearman_worker_add_server) {
 		RETURN_FALSE;
 	}
 
-	if (! gearman_worker_set_server_option(&(obj->worker), "exceptions", (sizeof("exceptions") - 1))) {
-		GEARMAN_EXCEPTION("Failed to set exception option", 0);
-	}
-
 	RETURN_TRUE;
 }
 /* }}} */
@@ -3291,10 +3279,6 @@ PHP_FUNCTION(gearman_worker_add_servers) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "%s",
 						 gearman_worker_error(&(obj->worker)));
 		RETURN_FALSE;
-	}
-
-	if (! gearman_worker_set_server_option(&(obj->worker), "exceptions", (sizeof("exceptions") - 1))) {
-		GEARMAN_EXCEPTION("Failed to set exception option", 0);
 	}
 
 	RETURN_TRUE;
